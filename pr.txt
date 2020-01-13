@@ -1,0 +1,90 @@
+private void OnTimeEvent(object sender, ElapsedEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                s += 1;
+                if (s == 60)
+                {
+                    s = 0;
+                    m += 1;
+                }
+                if (m == 60)
+                {
+                    m = 0;
+                    h += 1;
+
+                }
+                textBox1.Text = string.Format("{0}:{1}:{2}",h.ToString().PadLeft(2,'0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+
+            }));
+        }
+ System.Timers.Timer t;
+        System.Timers.Timer t1;
+        int h, m, s;
+ private void textchange()
+        {
+            String a = A.Text;
+            String b = B.Text;
+            String c = C.Text;
+            String d = D.Text;
+            String e1 = E.Text;
+            String f = F.Text;
+            String g = G.Text;
+            String h = H.Text;
+            String v = Vide.Text;
+            if (A.Text == "")
+            {
+                a = "#";
+            }
+            if (B.Text == "")
+            {
+                b = "#";
+            }
+            if (C.Text == "")
+            {
+                c = "#";
+            }
+            if (D.Text == "")
+            {
+                d = "#";
+            }
+            if (E.Text == "")
+            {
+                e1 = "#";
+            }
+            if (F.Text == "")
+            {
+                f = "#";
+            }
+            if (G.Text == "")
+            {
+                g = "#";
+            }
+            if (H.Text == "")
+            {
+                h = "#";
+            }
+            if (Vide.Text == "")
+            {
+                v = "#";
+            }
+            label1.Text = a + b + c + d + e1 + f + g + h + v;
+            if (label1.Text == "ABCDEFGH#")
+            {
+                t.Stop();
+               
+                p.Stop();
+                MessageBox.Show("you win");
+            }
+        }
+
+
+
+
+
+
+
+
+ t =new  System.Timers.Timer();
+            t.Interval = 1000;
+            t.Elapsed += OnTimeEvent;
